@@ -1,0 +1,220 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{M2AA3 Definitions}
+\author{India Marsden }
+\date{March 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+
+\maketitle
+\section*{List of definitons}
+\begin{enumerate}
+    \item Dot product
+    \item Inner product
+    \item Outer product
+    \item Norm
+    \item Orthogonal vectors
+    \item Orthogonal set of vectors
+    \item orthonormal
+    \item Matrix orthogonality
+    \item Positive definite
+    \item Negative Definite
+    \item Non-negative definite
+    \item QR Factorisation
+    \item Local minimum
+    \item Hessian
+    \item Least squares problem
+    \item Basis for orthogonal polynomials
+    \item Chebychev polynomials
+    \item Fourier Series
+    \item Bessels inequality
+    \item Parsevals Identity
+    \item Piecewise continuous
+    \item Interpolating polynomial
+    \item Lagrange Basis functions
+    \item Divided difference
+    \item Newton form
+    \item Supremum norm
+    \item Natural cubic splines
+    \item Hermite cubic splines
+    \item Error in quadrature
+    \item Quadrature
+\end{enumerate}
+\section{Applied Linear Algebra}
+
+\textbf{Dot product}
+$
+a \cdot b = |a| \cdot |b| \cdot \cos \theta \hspace{7pt} \text{for }0 \leq \theta \leq \pi
+$
+\\
+\\
+\textbf{Inner product}
+$ \underline{a}^T\underline{b} = ( a_1 , ... ,a_n ) \begin{pmatrix} b_1 \\ \vdots\\ b_n\end{pmatrix} = \sum_{i=1}^n a_ib_i \in \mathbb{R}
+$
+\\
+\\
+\textbf{Outer product}
+$ \underline{a}\underline{b}^T = \begin{pmatrix} a_1 \\ \vdots\\ a_n\end{pmatrix}( b_1 , ... ,b_n )  = \begin{pmatrix} a_1b_1 & \dots & a_1b_n \\ \vdots &  & \vdots \\ a_nb_1 & \dots & a_nb_n\end{pmatrix}\in \mathbb{R}^{n \times n}
+$
+\\
+\\
+\textbf{Norm}
+$ \Vert \underline{a} \Vert = (\langle \underline{a}, \underline{a} \rangle )^\frac{1}{2} = \bigg ( \sum_{i=1}^n a_i^2 \bigg )^\frac{1}{2} \geq 0
+$
+\\
+\\
+\textbf{Orthogonal Vectors} For $a,b \in \mathbb{R}^n $ non trival are orthogonal iff $\langle \underline{a}, \underline{b} \rangle = 0$
+\\
+\\
+\textbf{Orthogonal set of vectors}
+ We say $ \{ q_k \}^n_{k=1}$ is orthogonal if $ \langle q_j, q_k \rangle = 0$ for $j \ne k$ for $j,k = 1 \to n$.
+\\
+\\
+\textbf{Orthonormal}
+We say $ \{ q_k \}^n_{k=1}, q_K \in \mathbb{R}^n$ for $k = 1 \to n$ are orthonormal if
+$ \langle q_j , q_k \rangle = \delta_{jk} \text{ for } j,k =1 \to n$
+\\
+\\
+\textbf{Matrix orthogonality}A matrix $Q \in \mathbb{R}^{m \times m}$ is orthogonal if $Q^T Q = I^{(m)}$. 
+\begin{align*}
+    Q \text{ is orthogonal } &\iff Q^T \text{ orthogonal.} \\
+    \text{i.e.} \\
+Q \text{ orthogonal} &\iff Q \text{ has orthonormal columns}  \\
+&\iff Q^T \text{ has orthonormal columns} \\
+&\iff Q \text{ has orthonormal rows}
+\end{align*}
+\\
+\textbf{Positive Definite} A matrix $A \in \mathbb{R}^{n \times n}$ is called positive definite if $x^TAx > 0 \hspace{8pt}\forall x \in \mathbb{R}^n, \hspace{5pt} x \ne 0$.
+\\
+\\
+\textbf{Negative definite}
+$A \in \mathbb{R}^{n \times n}$ is called negative definite if $x^TAx <0 \forall x \in \mathbb{R}^n$.
+\\
+\\
+\textbf{Non-negative definite}
+$A \in \mathbb{R}^{n \times n} $is called non-negative definite if $x^T Ax \geq 0 \forall x \in \mathbb{R}^n$. Similarly for non-positive.
+\\
+\\
+\textbf{QR Factorisation} If $A \in \mathbb{R}^{m \times n} (n \leq m) \text{ and } A = QR \text{ where } Q \in \mathbb{R}^{m \times m}$ is orthogonal, and $R \in \mathbb{R}^{m \times n}$ is an upper triangular matrix, then we say that we have a QR factorisation of the matrix A.
+\\
+\\
+\textbf{Local minimum}
+f(x) has a local minimum at x = a if $\forall u \in \mathbb{R}^n$ such that $ \Vert u \Vert = 1, \exists \epsilon > 0$ such that
+$$f(a+hu) \geq f(a), \forall h \in [0,\epsilon]$$
+\\
+\\
+\textbf{Hessian}
+The Hessian of f (matrix of second order partial derivatives) is $D^2f(a) \in \mathbb{R}^{n \times n} $ with entries
+$$[D^2f(a)]_{ij} = \frac{\delta^2f}{\delta x_i \delta x_j}(a),\hspace{8pt} i,j=1 \to n $$
+
+\section{Least Squares Problems}
+\textbf{Inner product} Let V be a real vector space. An inner product on $V \times V$ is a function $\langle \cdot , \cdot \rangle:V \times V \to \mathbb{R}$ such that
+\renewcommand{\theenumi}{\roman{enumi}}
+\begin{enumerate}
+    \item $\langle \lambda v+\mu w,u \rangle = \lambda \langle v,u \rangle + \mu \langle w,u \rangle \hspace{7pt} \forall v,w,u \in V \text{ and } \forall \lambda, \mu \in \mathbb{R}.$
+    \item $\langle u,v \rangle =\langle v,u \rangle \hspace{7pt} \forall u,v \in V.$
+    \item $\langle u,u \rangle  \geq 0 \hspace{7pt} \forall u \in V, \text{ with equality iff } u=0 \in V.$
+\end{enumerate}
+\textbf{Least Squares Problem}
+ Let $v \in V$ be given. Find $u^{*} \in U$ such that
+$$ \Vert v - u^{*} \Vert \leq \Vert v - u \Vert \hspace{7pt} \forall u \in U$$
+\section{Orthogonal Polynomials}
+\textbf{Basis for orthogonal polynomials}
+So now we construct a new basis for $\mathbb{P}^n$, ${\phi_i}^n_{i=0}$ where $\phi_j(x)$ is a monic polynomial of degree j, i.e.$$
+\phi_j(x)= 1 \cdot x_j +��\sum_{i=0}^{j-1} a_{ij}x^i
+$$
+and such that ${\phi_i}ni=0 $ is orthogonal, i.e. $\langle \phi_i,\phi_j \rangle$ = 0 if $i \ne  j \implies \phi_0(x) = 1$.
+\\
+\\
+\textbf{Chebychev Polynomials}
+are of the form $T_k(k) = \cos (k \cos^{-1} x), -1 \leq x \leq 1$ and they are orthogonal with respect to the inner product $\int_{-1}^1 (1 - x^2)^{-\frac{1}{2}} f(x)g(x) dx$
+\section{Fourier Series}
+\textbf{Fourier Series}
+We formally define
+$$\frac{a_0}{2} + \sum_{m=1}^n a_m \cos(\frac{m\pi x}{d})  + b_m \sin(\frac{m\pi x}{d}) 
+$$
+as the Fourier series of f(x) where
+\begin{align*}
+  a_m = \frac{1}{d}\int_{-d}^d f(x) \cos(\frac{m\pi x}{d}) dx, \hspace{7pt} m = 0 \to \infty \\
+b_m = \frac{1}{d}\int_{-d}^d f(x) \sin(\frac{m\pi x}{d}) dx, \hspace{7pt} m = 1 \to \infty
+\end{align*}
+\textbf{Bessel's Inequality} 
+$$
+d \bigg [ \frac{a_0^2}{2} + \sum^n_{m=1} (a_m^2 + b_m^2 ) \bigg ] = \Vert f \Vert^2 - \Vert f- f^* \Vert^2 \leq \Vert f \Vert^2 < \infty
+$$
+\textbf{Parseval's identity} 
+$$
+d \bigg [ \frac{a_0^2}{2} + \sum^n_{m=1} (a_m^2 + b_m^2 ) \bigg ] = \int_{-d}^d [f(x)]^2 dx < \infty
+$$
+\textbf{Piecewise continuous}
+A function f is piecewise continuous on the interval $a \leq x \leq b$ if the interval can be partitioned by a finite number of points,$a=x_0 <x1 < \dots < x_n = b$ such that
+
+
+\renewcommand{\theenumi}{\roman{enumi}}
+ \begin{enumerate}
+   \item $f \in C(x_{i - 1},x_i),i = 1 \to n.$
+   \item f approaches a finite limit as the end points of each subinterval are approached from inside the subinterval.
+\end{enumerate}
+\section{Interpolating Polynomials}
+\textbf{Interpolating polynomial}
+Given data $\{(z_j,f_j)\}^n_{j=0},z_j,f_j \in \mathbb{C},j = 0 \to n$ Find a polynomial $p_n \in \mathbb{P}^n$ such that $$p_n(z_j)=f_j \text{ for } j=0 \to n$$.
+$p_n$ is called the interpolating polynomial for this data.
+\\
+\\
+\textbf{Lagrange basis functions}
+Given $\{(z_j,f_j)\}^n_{j=0},z_j,f_j \in \mathbb{C},j = 0 \to n,\{z_j\}$ distinct. Take: 
+$$
+\ell_j(z) = \prod^n_{k=0,  k \ne j} \frac{z - z_j}{z_j - z_k}, \hspace{8pt} j = 0 \to n
+$$
+The terms $\{ \ell_j (z) \}_{l=0}^{n}$ are called the Lagrange basis functions
+\\
+\\
+\textbf{Divided difference}
+The divided difference (of order n) is $C = f[z_0,z_1,...,z_n]$. We define $f[z_0,...,z_j]$ as the coefficient of $z_j$ in the interpolating polynomial $p_j \in P_j$ to the data $\{(z_i,t_j)\}^k_{i=0}$
+\\
+\\
+\textbf{Newton form} An interpolating polynomial is in Newton form when it fits this structure: 
+$$ p_n(z) = \sum_{j=0}^n f[z_0, \dots , z_j] \prod_{k=0}^{j-1} (z - z_k)
+$$
+\\
+\\
+\textbf{Supremum norm} Let $ \Vert y \Vert_\infty = \text{max}_ { a \leq y \leq b }| g(y)|$.
+\section{Piecewise polynomial interpolation}
+
+\textbf{Natural cubic splines} Let $s \in C^2[a, b]$ be such that
+\begin{enumerate}
+    \item  $s(x_j)=f(x_j),j=0 \to J$.
+    \item s is a cubic on $[x_j−1,x_j],j=1 \to J$
+    \item $ s''(x_0) = s''(x_j ) = 0$
+\end{enumerate}
+\textbf{Hermite cubic spline}  Let $s \in C^1[a, b]$ be such that
+\begin{enumerate}
+    \item $s(x_j) = f(x_j),s′(x_j) = f′(x_j), j = 0 \to J$
+    \item s is a cubic on $[x_j−1,x_j],j=1 \to J$
+\end{enumerate}
+
+\section{Quadrature (Numerical Integration}
+
+Approximate
+$$
+I(f) = \int_a^b w(x)f(x) dx 
+$$
+by
+$$
+I_n(f) = \sum_{k=0}^n w_k f(x_k)
+$$
+
+\textbf{Error}
+\begin{align*}
+    |I_n(f) - I(f) | &= \bigg | \int_a^b w(x) (f(x) - p_n(x)) dx \bigg | \\
+    & \leq \lVert f - p_n \rVert_\infty \int^b_a w(x) dx
+\end{align*}
+\end{document}
+
+
